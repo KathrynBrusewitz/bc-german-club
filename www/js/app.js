@@ -1,5 +1,5 @@
+Parse.initialize(***REMOVED***, ***REMOVED***);
 angular.module('bcgermanclub', ['ionic', 'bcgermanclub.controllers'])
-
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 

@@ -1,5 +1,18 @@
 <ion-view view-title="BC German Club">
   <ion-content padding="true">
 
+
+<div class="card"  ng-repeat="item in uniqueEntries"  style="padding-top:2vh; background:#00CCFF">
+  <div class="item item-text-wrap">
+   
+     <a class="item item-icon-left" href="#">
+    <i class="icon ion-calendar"></i>
+    Event Date: {{item.eventdate}}
+  </a>
+
+   {{item.event}}
+
+  </div>
+</div>
   </ion-content>
 </ion-view>

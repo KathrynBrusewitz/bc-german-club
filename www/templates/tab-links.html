@@ -1,4 +1,11 @@
 <ion-view view-title="BC German Club">
   <ion-content padding="true">
+ <div ng-repeat="item in values">
+<h1> {{item.caption}}</h1>
+<h2>{{item.description}}</h2>
+<!--this does not work perfectly ): yet--> 
+<h2><a href={{item.link}}>	{{item.link}}</a></h2>
+ 
+ </div>
   </ion-content>
 </ion-view>
