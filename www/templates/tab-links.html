@@ -1,12 +1,20 @@
 <ion-view view-title="BC German Club">
-  <ion-content padding="true">
- <div ng-repeat="item in values">
+<ion-content padding="true">
 
-<div class="card" >
-<h1>{{item.caption}}</h1>
- <h2> {{item.event}}</h2>
-  <h3> {{item.description}}</h3>
-</div>
- </div>
-  </ion-content>
+  <div class="list card" ng-repeat="link in linkEntries">
+    <div class="item item-body item-text-wrap">
+
+    <a href="{{item.link}}" class="item item-icon-left dark">
+      <i class="icon dark ion-social-youtube"></i>
+      <b>{{link.title}}</b>
+    </a>
+
+    <p>
+      {{link.description}}
+    </p>
+    </div>
+
+  </div>
+
+</ion-content>
 </ion-view>

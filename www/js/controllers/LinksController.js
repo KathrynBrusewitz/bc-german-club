@@ -2,35 +2,28 @@ angular.module('bcgermanclub.controllers')
 
 .controller('LinksController', function($scope, $state) {
 
+	$scope.linkEntries = [];
+	$scope.loadvalues = function() {
 
-	$scope.values=[]; 
-		$scope.loadvalues=function()
-		{
-				
-			console.log("called")
-			   //create an array to hold each unique test name as we find them
-		   
+		// Query parse to return TestScore objects
+		var Links = Parse.Object.extend("Links");
+		var query = new Parse.Query(Links);
+		query.limit(10000);  // Default query limit is only 100
 
-		    //query parse to return TestScore objects
-		    var Events = Parse.Object.extend("Links");
-		    var query = new Parse.Query(Events);
-		    query.limit(10000)  //added this after realizing that the default query limit is only 100 
-		   
-			    query.find(
-			    {
-					      success: function(testScore) 
-					      {
-					          $(testScore).each(function(index, score) 
-					          {
-					          	 //if the event name is not already in the "uniqueEntries" array, I add it to the array
-					                $scope.values.push({'link': score.get("Link"),"caption": score.get("caption"),"description":score.get("Description")})
-					          });
-					          	
-					      }
-					      
-					      
-	  	   		 }); 
-		}
-		$scope.loadvalues(); 
+		query.find({
+			success: function(links) {
+				$(links).each(function(index, link) {
+					// If link name is not already in the "uniqueEntries" array, add it to array
+					$scope.linkEntries.push({
+						"link": link.get("link"),
+						"title": link.get("title"),
+						"description": link.get("description")
+					})
+				});
+			}
+		});
+	}
+
+	$scope.loadvalues();
 
 });

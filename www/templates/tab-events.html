@@ -1,19 +1,24 @@
 <ion-view view-title="BC German Club">
-  <ion-content padding="true">
+<ion-content padding="true">
 
 
-<div class="card"  ng-repeat="item in uniqueEntries"  style="padding-top:2vh; background:#00CCFF">
-  <div class="item item-text-wrap">
-   
-     <a class="item item-icon-left" href="#">
-    <i class="icon ion-calendar"></i>
-    Event Date: {{item.eventdate}}
-  </a>
+<div class="list card" ng-repeat="event in eventEntries">
+  <div class="item item-body item-text-wrap">
 
-   {{item.event}}
-   {{item.description}}
+    <div class="item item-icon-left">
+      <i class="icon ion-calendar"></i>
+      <b>{{event.name}}</b>
+    </div>
+
+    <p><b>Date</b> {{event.date}}</p>
+
+    <p><b>Location</b> {{event.location}}</p>
+
+    <p>{{event.description}}</p>
 
   </div>
+
 </div>
-  </ion-content>
+
+</ion-content>
 </ion-view>
