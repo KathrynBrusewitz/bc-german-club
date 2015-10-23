@@ -4,8 +4,8 @@
   <div class="list card" ng-repeat="link in linkEntries" >
     <div class="item item-body item-text-wrap" >
 
-    <a href="{{item.link}}" class="item item-icon-left dark">
-      <i class="icon ion-social-youtube-outline"></i> 
+    <a href="{{link.link}}" onclick="window.open(this.href, '_blank','location=yes'); return false;" class="item item-icon-left dark">
+      <i class="icon ion-social-youtube-outline"></i>
       <b style="color:#11C1F3">{{link.title}}</b>
     </a>
 
