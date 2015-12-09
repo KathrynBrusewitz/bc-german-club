@@ -1,58 +1,61 @@
 Parse.initialize(***REMOVED***, ***REMOVED***);
 
-angular.module('bcgermanclub', [])
-.controller('clubevents', function($scope) {
-  $scope.eventEntries = [];
-    // Query parse to return event objects
-    var events = Parse.Object.extend("Event");
-    var query = new Parse.Query(events);
+var bcgc = angular.module('bcgc', []);
 
+bcgc.controller('eventsCtrl', function($scope) {
+  $scope.eventEntries = [];
+
+  $scope.loadEvents = function() {
+    var Event = Parse.Object.extend("Event");
+    var query = new Parse.Query(Event);
+    
     query.ascending("date");
+
     query.find({
-      success: function(events) {
-        $(events).each(function(index, eventThing) {
-          // Add event name if it isn't in "eventEntries" array
+      success: function(list) {
+        $(list).each(function(index, item) {
           $scope.eventEntries.push({
-            "name": eventThing.get("name"),
-            "details": eventThing.get("details"),
-            "place": eventThing.get("place"),
-            "date": $scope.dateconverter(String(eventThing.get("date")))
-          })
+            name: item.get("name"),
+            details: item.get("details"),
+            place: item.get("place"),
+            date: $scope.convertDate(String(item.get("date")))
+          });
         });
-        $scope.eventEntries.reverse();
+        $scope.eventEntries.reverse(); 
       }
     });
-
-  $scope.dateconverter = function(inputvalue) {
-    var time = $scope.GetTime(inputvalue);
+  };
+  
+  $scope.convertDate = function(date) {
+    var time = $scope.getTime(date);
     // Convert date and time to 12 hour clock
-    return inputvalue.slice(0, 15) + " " + time;
-  }
+    return date.slice(0, 15) + " " + time;
+  };
 
-  $scope.GetTime = function(date) {
+  $scope.getTime = function(date) {
     var currentTime = (new Date(date));
     var hours = currentTime.getHours();
     var minutes = currentTime.getMinutes();
     var suffix = '';
 
     if (hours > 11) {
-        suffix += "PM";
+      suffix += "PM";
     } else {
-        suffix += "AM";
+      suffix += "AM";
     }
 
     if (minutes < 10) {
-        minutes = "0" + minutes;
+      minutes = "0" + minutes;
     }
 
     if (hours > 12) {
-        hours -= 12;
+      hours -= 12;
     } else if (hours === 0) {
-        hours = 12;
+      hours = 12;
     }
 
     return hours + ":" + minutes + " " + suffix;
-  }
+  };
 
-  $scope.loadvalues();
+  $scope.loadEvents();
 });
