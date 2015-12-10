@@ -5,6 +5,8 @@ var bcgc = angular.module('bcgc', []);
 bcgc.controller('eventsCtrl', function($scope) {
   $scope.eventEntries = [];
 
+  
+
   $scope.loadEvents = function() {
     var Event = Parse.Object.extend("Event");
     var query = new Parse.Query(Event);
@@ -12,18 +14,24 @@ bcgc.controller('eventsCtrl', function($scope) {
     query.ascending("date");
 
     query.find({
-      success: function(list) {
-        $(list).each(function(index, item) {
-          $scope.eventEntries.push({
-            name: item.get("name"),
-            details: item.get("details"),
-            place: item.get("place"),
-            date: $scope.convertDate(String(item.get("date")))
-          });
-        });
-        $scope.eventEntries.reverse(); 
+      success: function(list)
+       {
+        $scope.tempents=[]; 
+        for(i=0; i<list.length; i++)
+        {
+         var name=list[i].get("name").toString()
+         var details= list[i].get("details").toString()
+         var place=  list[i].get("place").toString()
+         var date=   list[i].get("date").toString()
+        $scope.eventEntries.push({"name":name,"details":details,"place":place,"date":date}); 
+        //used scope.appply updates ui. 
+        //http://stackoverflow.com/questions/16066170/angularjs-directives-change-scope-not-reflected-in-ui
+        $scope.$apply(); 
+        }
+        
       }
     });
+    
   };
   
   $scope.convertDate = function(date) {
