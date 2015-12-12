@@ -32,7 +32,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" ng-controller="controller">
 
 
   <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
@@ -73,7 +73,7 @@
       <div class="header-content-inner">
         <h1>German Club <br>of Bellevue College</h1>
         <hr class="light">
-        <a href="#events" class="btn btn-warning btn-xl page-scroll">Next Meeting: Friday, January 20th, 2015</a>
+        <a href="#events" class="btn btn-warning btn-xl page-scroll">Next Meeting: {{eventEntries[0].date}}</a>
         <a href="#contact" class="btn btn-danger btn-xl page-scroll">Subscribe for Updates</a>
       </div>
     </div>
@@ -122,7 +122,7 @@
     </div>
   </section>
 
-  <section class="bg-dark" id="events" ng-controller="eventsCtrl">
+  <section class="bg-dark" id="events">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -136,7 +136,7 @@
         <div class="col-lg-3 col-md-6 col-sm-6" ng-repeat="event in eventEntries">
           <div class="event-box">
             <h3>{{event.name}}</h3>
-            <p class="text-faded">{{event.date}}<br>{{event.place}}</p>
+            <p class="text-faded">{{event.date}}<br>{{event.startTime}}<br>{{event.place}}</p>
             <p>{{event.details}}</p>
           </div>
         </div>
@@ -186,13 +186,14 @@
         <div class="col-lg-8 col-lg-offset-2 text-center">
           <h2 class="section-heading">We're working on future events.</h2>
           <hr class="primary">
-          <p>If you’d like us to email you when we have a club event coming up, stick your address here. We won’t email you for any other reason or share your address with anyone else.</p>
+          <p>If you’d like us to email you when something is coming up, stick your address here. We won’t email you for any other reason or share your address with anyone else.</p>
         </div>
 <!--orogional code--> 
        <!-- <form class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 text-center">
           <div class="form-group">
             <input type="email" class="form-control" id="inputEmail" placeholder="Email">
           </div>
+<<<<<<< HEAD
           <button type="submit" class="btn btn-danger" ng-click="clickme()">Sign Me Up</button>
         </form>--> 
 
@@ -219,7 +220,13 @@
 </div>
 
 
+=======
+          <button type="submit" class="btn btn-danger">Sign Me Up</button>
+        </form>
+      </div>
+>>>>>>> b4551f07e6fa54a7887d0ff247586af7e9585479
 
+      <div class="row">
         <div class="email-add col-lg-8 col-lg-offset-2 text-center">
           <p class="text-faded">Or, if you prefer, you can email us at <a href="mailto:mail@bcgermanclub.com">Mail@BCGermanClub.com</a></p>
         </div>
