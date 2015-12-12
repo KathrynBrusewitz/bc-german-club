@@ -1,12 +1,8 @@
 Parse.initialize(***REMOVED***, ***REMOVED***);
 
-angular.module('bcgc', [])
+var bcgc = angular.module('bcgc', []);
 
-<<<<<<< HEAD
-.controller('eventsCtrl', function($scope) {
-=======
 bcgc.controller('controller', function($scope) {
->>>>>>> b4551f07e6fa54a7887d0ff247586af7e9585479
   $scope.eventEntries = [];
 
   $scope.loadEvents = function() {
