@@ -1,8 +1,8 @@
 Parse.initialize(***REMOVED***, ***REMOVED***);
 
-var bcgc = angular.module('bcgc', []);
+angular.module('bcgc', [])
 
-bcgc.controller('eventsCtrl', function($scope) {
+.controller('eventsCtrl', function($scope) {
   $scope.eventEntries = [];
 
   
@@ -32,7 +32,7 @@ bcgc.controller('eventsCtrl', function($scope) {
       }
     });
     
-  };
+  }
   
   $scope.convertDate = function(date) {
     var time = $scope.getTime(date);
