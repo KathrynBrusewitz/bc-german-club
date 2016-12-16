@@ -1,0 +1,17 @@
+{
+  "name": "bcgermanclub",
+  "homepage": "https://bcgermanclub.com/",
+  "version": "0.1.0",
+  "author": {
+    "name": "Kathryn Brusewitz",
+    "email": "kathryn.brusewitz@gmail.com",
+    "url": "https://bruk.io/"
+  },
+  "private": true,
+  "devDependencies": {
+    "browser-sync": "^2.18.5"
+  },
+  "scripts": {
+    "start": "browser-sync start --server"
+  }
+}

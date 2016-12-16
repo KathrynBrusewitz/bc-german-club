@@ -29,6 +29,4 @@ Thumbs.db
 *.o
 *.so
 
-server.py
 sftp-config.json
-
