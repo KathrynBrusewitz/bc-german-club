@@ -1,4 +1,4 @@
-Parse.initialize(***REMOVED***, ***REMOVED***);
+Parse.initialize("applicationId", "javascriptKey");
 
 var bcgc = angular.module('bcgc', []);
 
@@ -8,7 +8,7 @@ bcgc.controller('controller', function($scope) {
   $scope.loadEvents = function() {
     var Event = Parse.Object.extend("Event");
     var query = new Parse.Query(Event);
-    
+
     query.ascending("date");
 
     query.find({
@@ -25,16 +25,16 @@ bcgc.controller('controller', function($scope) {
             "place": place,
             "date": $scope.removeTime(date),
             "startTime": startTime
-          }); 
-          // scope.apply updates UI 
+          });
+          // scope.apply updates UI
           // http://stackoverflow.com/questions/16066170/angularjs-directives-change-scope-not-reflected-in-ui
-          $scope.$apply(); 
+          $scope.$apply();
         }
       }
     });
-    
+
   }
-  
+
   $scope.removeTime = function(date) {
     return date.slice(0, 15);
   };
